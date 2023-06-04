@@ -6,8 +6,15 @@
   "author": "PancakeSwap",
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "codegen": "graph codegen subgraph.yaml",
-    "build": "graph build subgraph.yaml",
-    "deploy": "graph deploy --product hosted-service --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ pancakeswap/exchange subgraph.yaml"
+    "codegen": "graph codegen subgraph_bitgert_debug.yaml",
+    "build": "graph build subgraph_bitgert_debug.yaml",
+    "create-bitgert": "graph create --node http://135.181.114.124:8020/ simone1999/icecreamswap-bitgert",
+    "create-bitgert-debug": "graph create --node http://135.181.114.124:8020/ simone1999/icecreamswap-bitgert-debug",
+    "create-core": "graph create --node http://135.181.114.124:8120/ simone1999/icecreamswap-core",
+    "create-xdc": "graph create --node http://135.181.114.124:8220/ simone1999/icecreamswap-xdc",
+    "deploy-bitgert": "graph deploy simone1999/icecreamswap-bitgert --node http://135.181.114.124:8020/ --ipfs http://135.181.114.124:5001/ subgraph_bitgert.yaml",
+    "deploy-bitgert-debug": "graph deploy simone1999/icecreamswap-bitgert-debug --node http://135.181.114.124:8020/ --ipfs http://135.181.114.124:5001/ subgraph_bitgert_debug.yaml",
+    "deploy-core": "graph deploy simone1999/icecreamswap-core --node http://135.181.114.124:8120/ --ipfs http://135.181.114.124:5001/ subgraph_core.yaml",
+    "deploy-xdc": "graph deploy simone1999/icecreamswap-xdc --node http://135.181.114.124:8220/ --ipfs http://135.181.114.124:5001/ subgraph_xdc.yaml"
   }
 }

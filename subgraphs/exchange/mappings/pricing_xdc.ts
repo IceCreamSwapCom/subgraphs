@@ -3,8 +3,8 @@ import { BigDecimal, Address, log } from "@graphprotocol/graph-ts/index";
 import { Pair, Token, Bundle } from "../generated/schema";
 import {ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD, FACTORY_ADDRESS} from "./utils";
 
-let WCORE_ADDRESS = "0x40375c92d9faf44d2f9db9bd9ba41a3317a2404f";  // needs to be lower case
-const USDT_WETH_PAIR = '0x5ebae3a840ff34b107d637c8ed07c3d1d2017178'
+let WXDC_ADDRESS = "0x40375C92d9FAf44d2f9db9Bd9ba41a3317a2404f";  // needs to be lower case
+const USDT_WETH_PAIR = '0xe9450d66a493c3ae6ebc3bb0b2b01a5107ea8bdb'
 
 export function getBnbPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin
@@ -19,15 +19,10 @@ export function getBnbPriceInUSD(): BigDecimal {
 
 // token where amounts should contribute to tracked volume and liquidity
 let WHITELIST: string[] = [
-  '0x40375c92d9faf44d2f9db9bd9ba41a3317a2404f', // WCORE
-  '0xa20b3b97df3a02f9185175760300a06b4e0a2c05', // SCORE
-  '0xc0e49f8c615d3d4c245970f6dc528e4a47d69a44', // ICE
-  '0x81bcea03678d1cef4830942227720d542aa15817', // USDT (IceCreamSwap Bridge)
-  '0xd2683b22287e63d22928cbe4514003a92507f474', // USDC (IceCreamSwap Bridge)
-  '0x8687cd1d02a28098571067ddb18f33fef667c929', // BUSD (IceCreamSwap Bridge)
-  '0x1f82d787a1186c67360e62869c46eadbc192846a', // DAI (IceCreamSwap Bridge)
-  '0x12aa82525deff84777fa78578a68ceb854a85f43', // BNB (IceCreamSwap Bridge)
-  '0xef6b7bc74c9354bcf2e3f2a068e4b0b5cdf08f29', // ETH (IceCreamSwap Bridge)
+  WXDC_ADDRESS, // WXDC
+  '0x54051d9dbe99687867090d95fe15c3d3e35512ba', // ICE
+  '0xc57f0eb99363e747d637b17bbdb4e1ab85e60631', // USDT (IceCreamSwap Bridge)
+  '0xb25cb6a275a8d6a613228fb161eb3627b50eb696', // USDC (IceCreamSwap Bridge)
 ];
 
 // minimum liquidity for price to get tracked
@@ -38,7 +33,7 @@ let MINIMUM_LIQUIDITY_THRESHOLD_BNB = BigDecimal.fromString("10");
  * @todo update to be derived BNB (add stablecoin estimates)
  **/
 export function findBnbPerToken(token: Token): BigDecimal {
-  if (token.id == WCORE_ADDRESS) {
+  if (token.id == WXDC_ADDRESS) {
     return ONE_BD;
   }
   // loop through whitelist and check if paired with any
